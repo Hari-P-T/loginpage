@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Button, StyleSheet } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, Button, StyleSheet, Alert } from 'react-native';
 
 const SignupPage = () => {
   const [username, setUsername] = useState('');
@@ -19,9 +19,14 @@ const SignupPage = () => {
   };
 
   const handleSubmit = () => {
-    // You can implement the submission logic here
-    console.log('Username:', username);
-    console.log('Password:', password);
+    if (username.trim() === '' || password.trim() === '') {
+      // Display an alert if any of the input fields is empty
+      Alert.alert('Error', 'Please fill in all fields');
+    } else {
+
+      Alert.alert('Submitted successfully');
+      handleClear()
+    }
   };
 
   const handleForgotPassword = () => {
